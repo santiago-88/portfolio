@@ -175,24 +175,6 @@ export default function Navbar({
                   ))}
                 </div>
               </div>
-
-              {/* Mega menu custom quote & graphic */}
-              <div className="flex flex-col justify-between border-t border-current/20 pt-6 sm:border-t-0 sm:border-l sm:pt-0 sm:pl-6">
-                <div className="space-y-3 text-left">
-                  <span className="font-mono text-[9px] tracking-widest text-accent font-bold">
-                    — CODEX ESCRITO GÓTICO-DECO
-                  </span>
-                  <p className="font-serif italic text-sm tracking-wide text-muted leading-relaxed">
-                    "{translations.nav.studioQuote}"
-                  </p>
-                </div>
-
-                <div className="mt-6 flex flex-col space-y-1.5 font-mono text-[9px] text-[#121212] dark:text-[#f5f5f0] border-t border-current/20 pt-4 text-left">
-                  <span>OWNER: ELIAS SANTIAGO ESCOBAR OCAMPO</span>
-                  <span>BUILD_TIMESTAMP: 2026-05-21T18:46:31Z</span>
-                  <span>VERSION_STAGE: STABLE RELEASE 2.1</span>
-                </div>
-              </div>
             </div>
           </motion.div>
         )}
