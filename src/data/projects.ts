@@ -17,7 +17,7 @@ export const projectsData: Project[] = [
       "Diseño y desarrollo de una landing page moderna para una empresa de excursiones de pesca, enfocada en transmitir aventura, naturaleza y experiencia premium. El sitio incluye secciones informativas, galería visual, contacto y una interfaz responsive optimizada para todos los dispositivos.",
     description:
       "AETHER redefine la adquisición digital de moda mediante una interfaz imborrable de alto contraste y microinteracciones coreografiadas de ópera espacial. El proyecto combina diseño fluido con carga optimizada bajo demanda.",
-    image: "../../public/images/Chico.png",
+    image: "/images/Chico.png",
     color: "#c5a45b", // Warm Gold
     textColor: "text-[#121212]",
     accentColor: "#991b1b", // Deep Crimson
@@ -55,7 +55,7 @@ export const projectsData: Project[] = [
       "Diseño y desarrollo de una experiencia web moderna con estética visual inmersiva y enfoque minimalista. El sitio combina animaciones suaves, diseño responsive y una interfaz limpia orientada a destacar contenido visual, navegación intuitiva y presencia digital profesional.",
     description:
       "Desarrollado para resolver la sincronización caótica de vehículos en urbes metropolitanas, este tablero combina capas interactivas vectoriales sobre mapas vectoriales de alto contraste Art Déco (Emerald & Brass).",
-    image: "../../public/images/Coderflow.png",
+    image: "/images/Coderflow.png",
     color: "#064e4b", // Emerald Green
     textColor: "text-[#f5f5f0]",
     accentColor: "#d4af37", // Bright Gold
@@ -92,7 +92,7 @@ export const projectsData: Project[] = [
       "Desarrollo de una landing page interactiva con enfoque visual moderno y navegación fluida. El proyecto prioriza una experiencia inmersiva mediante animaciones, diseño responsive y una identidad estética limpia orientada a destacar marca, contenido y presencia digital.",
     description:
       "KRYPTON elimina las distracciones de las plataformas web modernas para ofrecer un panel de visualización cruda, directo al grano, que canaliza cotizaciones de múltiples protocolos blockchain con alertas de umbral.",
-    image: "../../public/images/Chapas.png",
+    image: "/images/Chapas.png",
     color: "#991b1b", // Charcoal Matte-Crimson
     textColor: "text-[#f5f5f0]",
     accentColor: "#ffffff", // Pure White
