@@ -1,0 +1,66 @@
+{
+  "entities": {
+    "Message": {
+      "title": "Contact Message",
+      "description": "Message submitted through the portfolio contact form",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "subject": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "userId": {
+          "type": "string"
+        }
+      },
+      "required": ["name", "email", "message", "createdAt"]
+    },
+    "ProjectLike": {
+      "title": "Project Like",
+      "description": "A like record for a specific project from a visitor",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "projectId": {
+          "type": "string"
+        },
+        "userId": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["projectId", "userId", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/messages/{messageId}": {
+      "schema": "Message",
+      "description": "Collection of contact messages"
+    },
+    "/projects/{projectId}/likes/{likeId}": {
+      "schema": "ProjectLike",
+      "description": "Appreciation likes for each project"
+    }
+  }
+}

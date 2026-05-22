@@ -1,0 +1,71 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Global Safety Net - Default Deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // --- Hardened Global Helpers ---
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // Role check: Admin configuration check.
+    // If we want a bootstrapped admin, look up `/admins/$(request.auth.uid)`
+    function isAdmin() {
+      return isSignedIn() && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    // --- Message Rules ---
+    // Anyone can create a contact message. To prevent PII leaks, reads are restricted to Admin or the sender.
+    match /messages/{messageId} {
+      allow get: if isAdmin() || (isSignedIn() && existing().userId == request.auth.uid);
+      allow list: if isAdmin() || (isSignedIn() && resource.data.userId == request.auth.uid);
+      
+      allow create: if isValidId(messageId) 
+        && incoming().name is string && incoming().name.size() >= 2 && incoming().name.size() <= 100
+        && incoming().email is string && incoming().email.size() >= 5 && incoming().email.size() <= 150
+        && incoming().subject is string && incoming().subject.size() >= 2 && incoming().subject.size() <= 150
+        && incoming().message is string && incoming().message.size() >= 5 && incoming().message.size() <= 5000
+        && incoming().createdAt == request.time
+        && (!incoming().keys().hasAll(['userId']) || (incoming().userId is string && incoming().userId == request.auth.uid));
+        
+      allow update, delete: if isAdmin();
+    }
+
+    // --- Project Likes Rules ---
+    // Public read for counts. Add/remove own likes if authenticated.
+    match /projects/{projectId}/likes/{likeId} {
+      allow read, list: if true;
+      
+      allow create: if isValidId(projectId) && isValidId(likeId)
+        && isSignedIn()
+        && incoming().projectId == projectId
+        && incoming().userId == request.auth.uid
+        && incoming().createdAt == request.time;
+        
+      allow delete: if isSignedIn() && existing().userId == request.auth.uid;
+    }
+    
+    // --- Admin Collection Rules ---
+    // Admins are created during initialization. Admins can read admin configs.
+    match /admins/{adminId} {
+      allow read: if isSignedIn() && request.auth.uid == adminId;
+      allow write: if false; // System only or configured via console.
+    }
+  }
+}

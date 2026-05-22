@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ES favicon">
+  <rect width="64" height="64" rx="10" fill="#121212"/>
+  <path d="M14 14h36v6H21v10h25v6H21v8h29v6H14V14Z" fill="#f5f5f0"/>
+  <path d="M18 50h32v-6H25v-8h21v-6H25V20h25v-6H18v36Z" fill="none" stroke="#d4af37" stroke-width="2"/>
+  <path d="M48 16 16 48" stroke="#d4af37" stroke-width="3" stroke-linecap="square"/>
+</svg>
