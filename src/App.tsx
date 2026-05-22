@@ -27,13 +27,13 @@ export default function App() {
       setLang(savedLang);
     }
 
-    if (savedTheme === Theme.DARK || savedTheme === Theme.LIGHT) {
+    if (savedTheme === Theme.LIGHT || savedTheme === Theme.DARK) {
       setTheme(savedTheme);
       applyTheme(savedTheme);
     } else {
       // Default to Light theme as specified in the Mood guidelines
-      setTheme(Theme.LIGHT);
-      applyTheme(Theme.LIGHT);
+      setTheme(Theme.DARK);
+      applyTheme(Theme.DARK);
     }
 
     const handleScrollVisibility = () => {
